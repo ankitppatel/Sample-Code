@@ -1,3 +1,5 @@
+#Hangman game created for Python v3.3
+
 import random
 
 #create a list of words to choose from
