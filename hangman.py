@@ -44,13 +44,25 @@ def printHangMan (fails):
 
 	return
 
+#define a function that will scrub the input received from user and take the first available letter as the input
+def scrubInput(myResponse):
+	if len(myResponse) == 1 and myResponse.isalpha():
+		return myResponse
+	else:
+		for x in myResponse:
+			if x.isalpha():
+				return x
+
+	return ''
+
 #keep guessing letters until you've lost or won 
 while (failedAttempts < 6) and (correctAttempts < wordLength):
-	while response == '':
+	while response == '' :
 		printHangMan (failedAttempts)
-		response = input('Guess a letter in the word ' + ''.join(L) + " : " ).upper()
-		if response == '':
+		response = scrubInput (input('Guess a letter in the word ' + ''.join(L) + " : " ).upper())
+		if response == '' :
 			print ('You did not enter a letter') #ask again for a letter if a blank is entered
+
 	
 # find letter in the chosen word and replace each dash with relevant letter or increment failedAttempts
 	if response in word: 
